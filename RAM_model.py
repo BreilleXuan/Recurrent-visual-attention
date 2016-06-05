@@ -145,6 +145,8 @@ sampled_locs = tf.reshape(sampled_locs, (batch_size, glimpses, 2))
 mean_locs = tf.concat(0, mean_locs)
 mean_locs = tf.reshape(mean_locs, (batch_size, glimpses, 2))
 
+output_pred = tf.concat(0, pred_tensor)
+
 p_loc = gaussian_pdf(mean_locs, sampled_locs) #batch_size * glimpses * 2
 p_loc = tf.reshape(p_loc, (batch_size, glimpses * 2))
 cost, reward = calc_reward(pred_tensor, pred, labels, tensor_labels, p_loc, baseline)

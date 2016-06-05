@@ -1,5 +1,5 @@
 
-save_dir = "save-3scales/"
+save_dir = "weights/"
 save_prefix = "save"
 start_step = 10000
 load_path = None
@@ -24,11 +24,11 @@ cell_out_size = cell_size
 glimpses = 5
 n_classes = 10
 
-lr = 1e-3
+lr = 1e-4
 max_iters = 1000000
 
 mnist_size = 28
 
 loc_sd = 0.1
 
-lmda = 2. #cost weights
+lmda = 1. #cost weights

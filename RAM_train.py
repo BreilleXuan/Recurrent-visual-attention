@@ -44,15 +44,17 @@ for step in xrange(max_iters):
     
     nextX, nextY = dataset.train.next_batch(batch_size)
     feed_dict = {img: nextX, labels: nextY, tensor_labels: dense_to_one_hot(nextY)}
-    fetches = [train_op, cost, reward]
+    fetches = [train_op, output_pred, cost, reward]
     
     results = sess.run(fetches, feed_dict=feed_dict)
-    _, cost_fetched, reward_fetched = results
+    _, pred, cost_fetched, reward_fetched = results
     
     duration = time.time() - start_time
 
-    if (step + 1) % 20 == 0:
+    if (step + 1) % 40 == 0:
         print('Step %d: cost = %.5f reward = %.5f (%.3f sec)' % (step + 1, cost_fetched, reward_fetched, duration))
+        print("preds ", pred)
+        print("labels", nextY)
 
     if (step + 1) % 2000 == 0:
         evaluate(dataset) 
